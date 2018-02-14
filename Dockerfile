@@ -8,3 +8,14 @@ ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
 # Cleaning
 RUN apt-get clean
+
+# Install the application.
+ADD . /usr/local/src/gdal-docker/
+RUN /usr/local/src/gdal-docker/build.sh
+
+# Externally accessible data is by default put in /data
+WORKDIR /data
+VOLUME ["/data"]
+
+# Output version and capabilities by default.
+CMD gdalinfo --version && gdalinfo --formats && ogrinfo --formats
