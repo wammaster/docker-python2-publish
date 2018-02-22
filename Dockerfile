@@ -24,4 +24,5 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		wget \
 		unzip \
 		git-all \
+		gdal-bin \
 	&& rm -rf /var/lib/apt/lists/*
